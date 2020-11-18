@@ -1,4 +1,5 @@
 from django import forms
+from captcha.fields import CaptchaField
 
 class CommentForm(forms.Form):
     author = forms.CharField(
@@ -11,6 +12,10 @@ class CommentForm(forms.Form):
     body = forms.CharField(widget=forms.Textarea(
         attrs={
             "class": "form-control",
-            "placeholder": "Leave a comment!"
+            "placeholder": "Leave a comment"
         })
     )
+    captcha = CaptchaField(
+        label="What does this say?",
+        required=True,
+    )    

@@ -1,22 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
-<div class="col-md-8 offset-md-2">
-    <h1>Blog Index</h1>
-    <hr>
-    {% for post in posts %}
-    <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
-    <img src="{% static post.image %}" />
-    <small>
-        {{ post.created_on.date }} |&nbsp;
-        Categories:&nbsp;
-        {% for category in post.categories.all %}
-        <a href="{% url 'blog_category' category.name %}">
-            {{ category.name }}
-        </a>&nbsp;
+<div class="row">
+    <div class="col-md-12">
+        {% for post in posts %}
+        <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
+        {% if post.image != "null" %}
+        <img src="{% static post.image %}" />
+        {% endif %}
+    
+            {{ post.created_on.date }} |&nbsp;
+            Categories:&nbsp;
+            {% for category in post.categories.all %}
+            <a href="{% url 'blog_category' category.name %}">
+                {{ category.name }}
+            </a>&nbsp;
+            {% endfor %}
+    
+        <p>{{ post.body | slice:":400" | safe }}...</p>
         {% endfor %}
-    </small>
-    <p>{{ post.body | slice:":400" | safe }}...</p>
-    {% endfor %}
+    </div>
 </div>
 {% endblock %}
