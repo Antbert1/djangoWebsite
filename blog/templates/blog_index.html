@@ -4,20 +4,48 @@
 <div class="row">
     <div class="col-md-12">
         {% for post in posts %}
-        <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
-        {% if post.image != "null" %}
-        <img src="{% static post.image %}" />
-        {% endif %}
-    
-            {{ post.created_on.date }} |&nbsp;
-            Categories:&nbsp;
-            {% for category in post.categories.all %}
-            <a href="{% url 'blog_category' category.name %}">
-                {{ category.name }}
-            </a>&nbsp;
-            {% endfor %}
-    
-        <p>{{ post.body | slice:":400" | safe }}...</p>
+            <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
+            {% if post.image != "null" %}
+            <div class="postWithImage">                
+                <div class="postInfoOverlay">                    
+                    <div class="postInfoTitle">
+                        <a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a>
+                    </div>
+                    <div class="postInfoDate">
+                        {{ post.created_on.date }} |&nbsp;
+                        Categories:&nbsp;
+                        {% for category in post.categories.all %}
+                            <a href="{% url 'blog_category' category.name %}">
+                                {{ category.name }}
+                            </a>&nbsp;
+                        {% endfor %}
+                    </div>
+                </div>
+                <img src="{% static post.image %}" />
+            </div>
+                <img src="{% static post.image %}" />
+                {{ post.created_on.date }} |&nbsp;
+                Categories:&nbsp;
+                {% for category in post.categories.all %}
+                    <a href="{% url 'blog_category' category.name %}">
+                        {{ category.name }}
+                    </a>&nbsp;
+                {% endfor %}
+        
+                <p>{{ post.body | slice:":400" | safe }}...</p>
+            {% else %}
+                {{ post.created_on.date }} |&nbsp;
+                Categories:&nbsp;
+                {% for category in post.categories.all %}
+                    <a href="{% url 'blog_category' category.name %}">
+                        {{ category.name }}
+                    </a>&nbsp;
+                {% endfor %}
+        
+                <p>{{ post.body | slice:":400" | safe }}...</p>
+            {% endif %}
+        
+
         {% endfor %}
     </div>
 </div>
