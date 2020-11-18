@@ -2,6 +2,9 @@ from django.shortcuts import render
 from blog.models import Post, Comment
 from .forms import CommentForm
 
+def about(request):
+    return render(request, "about.html")
+
 def blog_index(request):
     posts = Post.objects.all().order_by('-created_on')
     context = {
