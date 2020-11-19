@@ -2,61 +2,56 @@
 {% load static %}
 {% block page_content %}
 
-<div class="itemContainerZZ">
-    <div class="itemZZ">
-        <img src="{% static '/img/fern1.jpg' %}" style="width: 100%"/>
-    </div>
-    <div class="itemZZ" style="height: 190px">
 
-    </div>
-    <div class="itemZZ" style="height: 170px">
-    
-    </div>
-    <div class="itemZZ" style="height: 120px">
-    
-    </div>
-    <div class="itemZZ" style="height: 160px">
-    
-    </div>
-    <div class="itemZZ" style="height: 180px">
-    
-    </div>
-    <div class="itemZZ" style="height: 140px">
-    
-    </div>
-    <div class="itemZZ" style="height: 150px">
-    
-    </div>
-    <div class="itemZZ" style="height: 170px">
-    
-    </div>
-    <div class="itemZZ" style="height: 170px">
-    
-    </div>
-  </div>
 
 <div class="row">
+                        <!-- <div class="postInfoDate">
+                            {{ post.created_on.date }} |&nbsp;Categories:&nbsp;{% for category in post.categories.all %}
+                                <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
+                            {% endfor %}
+                        </div> -->
 
-
-    <div class="col-md-12 grid">
+    <div class="col-md-12 gridContainer">
         {% for post in posts %}
             {% if post.image != "null" %}
-            <div class="postWithImage grid-item" style="background-image: url({% static post.image %}) ">
-            <!-- <div class="postWithImage grid-item">                 -->
-                <div class="postInfoOverlay">                    
-                    <div class="postInfoTitle">
+            <!-- <div class="postWithImage gridItem" style="background-image: url({% static post.image %}) "> -->
+            <div class=" gridItem">      
+                <div class="imageAndTitle">
+                    <img src="{% static post.image %}" style="width: 100%" class="postImage" />        
+                    <!-- <div class="postInfoDate">
+                        {{ post.created_on.date }}
+                    </div> -->
+                    <div class="postInfoOverlay">                    
+                        <div class="postInfoTitle">
+                            <a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a>
+                        </div>
+                        
+
+                    </div>
+                </div> 
+                     <div class="postInfoDate">
+                            {{ post.created_on.date }} |&nbsp;Categories:&nbsp;{% for category in post.categories.all %}
+                                <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
+                            {% endfor %}
+                       </div>
+                 <div class="blurb">
+                    {{ post.body | slice:":180" }}...
+                </div> 
+            </div>
+            {% else %}
+                <div class="gridItem" style="height: 250px">
+                    <div class="textOnlyTitle">
                         <a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a>
                     </div>
-                    <!-- <div class="postInfoDate">
+                    <div class="postInfoDate">
                         {{ post.created_on.date }} |&nbsp;Categories:&nbsp;{% for category in post.categories.all %}
                             <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
                         {% endfor %}
-                    </div> -->
-                </div>
-            </div>
-            {% else %}
-                <div class="noImage grid-item">
-                    <div class="postInfoDate">
+                   </div>
+                   <div class="blurb">
+                    {{ post.body | slice:":180" }}...
+                    </div> 
+                    <!-- <div class="postInfoDate">
                         {{ post.created_on.date }} |&nbsp;
                         Categories:&nbsp;
                         {% for category in post.categories.all %}
@@ -65,7 +60,7 @@
                             </a>&nbsp;
                         {% endfor %}
                     </div>            
-                    <div>{{ post.body | slice:":400" | safe }}...</div>
+                    <div>{{ post.body | slice:":400" | safe }}...</div> -->
                 </div>
             {% endif %}        
 

@@ -14,13 +14,13 @@
 } */
 
 
-.itemContainerZZ {
+.gridContainer {
   display: flex;
   flex-flow: column wrap;
   align-content: space-between;
   /* Your container needs a fixed height, and it 
    * needs to be taller than your tallest column. */
-  height: 1000px;
+  height: 2000px;
   
   /* Optional */
   /* background-color: #f7f7f7;
@@ -31,35 +31,44 @@
   counter-reset: items; 
 }
 
-.itemZZ {
+.gridItem {
   width: 32%;
   /* Optional */
   position: relative;
   margin-bottom: 2%;
-  border: 1px solid #4290e2;
-  color: #fff;
+  /* border: 1px solid #4290e2; */
   padding: 15px;
   box-sizing: border-box;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24), 0 0 0px 0 rgba(0,0,0,.12), 0 0px 0px 0 rgba(0,0,0,.24);
 }
 
-.itemZZ::before {
+.gridItem::before {
   counter-increment: items;
-  content: counter(items);
+  /* content: counter(items); */
 }
 
 /* Re-order items into 3 rows */
-.itemZZ:nth-child(3n+1) { order: 1; }
-.itemZZ:nth-child(3n+2) { order: 2; }
-.itemZZ:nth-child(3n)   { order: 3; }
+.gridItem:nth-child(3n+1) { order: 1; }
+.gridItem:nth-child(3n+2) { order: 2; }
+.gridItem:nth-child(3n)   { order: 3; }
 
 /* Force new columns */
-.itemContainerZZ::before,
-.itemContainerZZ::after {
+.gridContainer::before,
+.gridContainer::after {
   content: "";
   flex-basis: 100%;
   width: 0;
   order: 2;
 }
+
+.imageAndTitle {
+  position: relative;
+}
+
+.postImage {
+  position: relative;
+}
+
 
 body { font-family: sans-serif; }
 h3 { text-align: center; }
@@ -75,7 +84,8 @@ h3 { text-align: center; }
 .menu-row {
   display: flex;
   justify-content: flex-start;
-  padding-top: 20
+  padding-top: 20;
+  padding-bottom: 40;
 }
 
 .menuItem {
@@ -104,17 +114,32 @@ h3 { text-align: center; }
   justify-content: flex-end
 }
 
+.textOnlyTitle a {
+  font-size: 20px;
+}
+
 .postInfoOverlay {
   /* position: absolute;
   bottom: 0; */
   z-index: 1;
   background: rgba(0,0,0,0.8);
-  width: 100%;
+  /* width: 100%; */
   color: white;
+  position: absolute;
+  width: 325px;
+  bottom: 0;
+  padding: 10px;
+}
+
+.postInfoDate {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 14px;
 }
 
 .postInfoTitle a {
   color: white !important;
+  font-size: 20px;
 }
 
 .postInfoOverlay a {
