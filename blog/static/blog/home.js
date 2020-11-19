@@ -1,5 +1,11 @@
 // $(document).ready(function(){
 //     $('[data-toggle="popover"]').popover();
+//
+//Masonry
+// $('.grid').masonry({
+//   // options...
+//   itemSelector: '.grid-item',
+//   columnWidth: 200
 // });
 
 var div = document.getElementById("dom-target");

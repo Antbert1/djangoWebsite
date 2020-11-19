@@ -13,8 +13,63 @@
 	margin-top:-20px;
 } */
 
+
+.itemContainerZZ {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: space-between;
+  /* Your container needs a fixed height, and it 
+   * needs to be taller than your tallest column. */
+  height: 1000px;
+  
+  /* Optional */
+  /* background-color: #f7f7f7;
+  border-radius: 3px;
+  padding: 20px;
+  width: 60%;
+  margin: 40px auto;*/
+  counter-reset: items; 
+}
+
+.itemZZ {
+  width: 32%;
+  /* Optional */
+  position: relative;
+  margin-bottom: 2%;
+  border: 1px solid #4290e2;
+  color: #fff;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.itemZZ::before {
+  counter-increment: items;
+  content: counter(items);
+}
+
+/* Re-order items into 3 rows */
+.itemZZ:nth-child(3n+1) { order: 1; }
+.itemZZ:nth-child(3n+2) { order: 2; }
+.itemZZ:nth-child(3n)   { order: 3; }
+
+/* Force new columns */
+.itemContainerZZ::before,
+.itemContainerZZ::after {
+  content: "";
+  flex-basis: 100%;
+  width: 0;
+  order: 2;
+}
+
+body { font-family: sans-serif; }
+h3 { text-align: center; }
+
 .logo-row {
   padding-top: 20
+}
+
+.postImage {
+  max-width: 400px;
 }
 
 .menu-row {
@@ -36,13 +91,22 @@
   font-size: 20px;
 }
 
+.grid {
+  display: flex;
+  flex-flow: column wrap;
+}
+
 .postWithImage {
-  position: relative;
+  min-height: 400px; 
+  background-repeat: no-repeat; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-end
 }
 
 .postInfoOverlay {
-  position: absolute;
-  bottom: 0;
+  /* position: absolute;
+  bottom: 0; */
   z-index: 1;
   background: rgba(0,0,0,0.8);
   width: 100%;

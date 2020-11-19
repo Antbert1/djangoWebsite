@@ -1,16 +1,61 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
+
+<div class="itemContainerZZ">
+    <div class="itemZZ">
+        <img src="{% static '/img/fern1.jpg' %}" style="width: 100%"/>
+    </div>
+    <div class="itemZZ" style="height: 190px">
+
+    </div>
+    <div class="itemZZ" style="height: 170px">
+    
+    </div>
+    <div class="itemZZ" style="height: 120px">
+    
+    </div>
+    <div class="itemZZ" style="height: 160px">
+    
+    </div>
+    <div class="itemZZ" style="height: 180px">
+    
+    </div>
+    <div class="itemZZ" style="height: 140px">
+    
+    </div>
+    <div class="itemZZ" style="height: 150px">
+    
+    </div>
+    <div class="itemZZ" style="height: 170px">
+    
+    </div>
+    <div class="itemZZ" style="height: 170px">
+    
+    </div>
+  </div>
+
 <div class="row">
-    <div class="col-md-12">
+
+
+    <div class="col-md-12 grid">
         {% for post in posts %}
-            <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
             {% if post.image != "null" %}
-            <div class="postWithImage">                
+            <div class="postWithImage grid-item" style="background-image: url({% static post.image %}) ">
+            <!-- <div class="postWithImage grid-item">                 -->
                 <div class="postInfoOverlay">                    
                     <div class="postInfoTitle">
                         <a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a>
                     </div>
+                    <!-- <div class="postInfoDate">
+                        {{ post.created_on.date }} |&nbsp;Categories:&nbsp;{% for category in post.categories.all %}
+                            <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
+                        {% endfor %}
+                    </div> -->
+                </div>
+            </div>
+            {% else %}
+                <div class="noImage grid-item">
                     <div class="postInfoDate">
                         {{ post.created_on.date }} |&nbsp;
                         Categories:&nbsp;
@@ -19,32 +64,10 @@
                                 {{ category.name }}
                             </a>&nbsp;
                         {% endfor %}
-                    </div>
+                    </div>            
+                    <div>{{ post.body | slice:":400" | safe }}...</div>
                 </div>
-                <img src="{% static post.image %}" />
-            </div>
-                <img src="{% static post.image %}" />
-                {{ post.created_on.date }} |&nbsp;
-                Categories:&nbsp;
-                {% for category in post.categories.all %}
-                    <a href="{% url 'blog_category' category.name %}">
-                        {{ category.name }}
-                    </a>&nbsp;
-                {% endfor %}
-        
-                <p>{{ post.body | slice:":400" | safe }}...</p>
-            {% else %}
-                {{ post.created_on.date }} |&nbsp;
-                Categories:&nbsp;
-                {% for category in post.categories.all %}
-                    <a href="{% url 'blog_category' category.name %}">
-                        {{ category.name }}
-                    </a>&nbsp;
-                {% endfor %}
-        
-                <p>{{ post.body | slice:":400" | safe }}...</p>
-            {% endif %}
-        
+            {% endif %}        
 
         {% endfor %}
     </div>
