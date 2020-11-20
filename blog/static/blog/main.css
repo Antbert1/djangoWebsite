@@ -32,6 +32,7 @@
 }
 
 .gridItem {
+  background-color: white;
   width: 32%;
   /* Optional */
   position: relative;
@@ -70,7 +71,10 @@
 }
 
 
-body { font-family: sans-serif; }
+body { 
+  background: rgb(241, 241, 241);
+  font-family: sans-serif;
+ }
 h3 { text-align: center; }
 
 .logo-row {

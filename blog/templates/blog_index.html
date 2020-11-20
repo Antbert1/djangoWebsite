@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load tag %}
 {% block page_content %}
 
 
@@ -30,7 +31,7 @@
                     </div>
                 </div> 
                      <div class="postInfoDate">
-                            {{ post.created_on.date }} |&nbsp;Categories:&nbsp;{% for category in post.categories.all %}
+                            {% getDateMonth post.created_on.date %} | |&nbsp;Categories:&nbsp;{% for category in post.categories.all %}
                                 <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
                             {% endfor %}
                        </div>
