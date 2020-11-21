@@ -13,6 +13,10 @@
 	margin-top:-20px;
 } */
 
+.topBar {
+  background: white;
+  margin-bottom: 20px;
+}
 
 .gridContainer {
   display: flex;
@@ -38,9 +42,42 @@
   position: relative;
   margin-bottom: 2%;
   /* border: 1px solid #4290e2; */
-  padding: 15px;
+  /* padding: 15px; */
   box-sizing: border-box;
   box-shadow: 0 0 2px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24), 0 0 0px 0 rgba(0,0,0,.12), 0 0px 0px 0 rgba(0,0,0,.24);
+}
+
+.topDate {
+  display: flex;
+  left: 2;
+  position: absolute;
+  top: 2px;
+  z-index: 2;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  /* border: 2px solid rgb(72,72,72); */
+  /* font-weight: 600; */
+  color: rgb(44, 44, 44);
+}
+
+.topDateNoImg {
+  border: 2px solid rgb(44, 44, 44);
+}
+
+.topDateDate {
+  font-size: 24px;
+}
+
+.topDateMonth {
+  margin-top: -4px;
+}
+
+.topDateYear {
+  padding-left: 2px;
+  padding-right: 2px;
+  /* background: rgb(72,72,72);
+  color: white; */
 }
 
 .gridItem::before {
@@ -89,7 +126,7 @@ h3 { text-align: center; }
   display: flex;
   justify-content: flex-start;
   padding-top: 20;
-  padding-bottom: 40;
+  padding-bottom: 20;
 }
 
 .menuItem {
@@ -98,7 +135,7 @@ h3 { text-align: center; }
 }
 
 .activeMenuItem a {
-  border-bottom: 3px solid #db0d66;
+  border-bottom: 3px solid #f0b70c;
 }
 
 .menuItem a {
@@ -118,6 +155,11 @@ h3 { text-align: center; }
   justify-content: flex-end
 }
 
+.textOnlyTitle {
+   padding: 15px;
+   padding-left: 50px;
+}
+
 .textOnlyTitle a {
   font-size: 20px;
 }
@@ -130,7 +172,7 @@ h3 { text-align: center; }
   /* width: 100%; */
   color: white;
   position: absolute;
-  width: 325px;
+  width: 100%;
   bottom: 0;
   padding: 10px;
 }
@@ -139,6 +181,8 @@ h3 { text-align: center; }
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 14px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .postInfoTitle a {
@@ -146,8 +190,16 @@ h3 { text-align: center; }
   font-size: 20px;
 }
 
+.postInfoDateTextOnly {
+  padding-top: 20px;
+}
+
 .postInfoOverlay a {
   color: white;
+}
+
+.blurb {
+  padding: 15px;
 }
 
 h1, h2, h3, h4, p, a {

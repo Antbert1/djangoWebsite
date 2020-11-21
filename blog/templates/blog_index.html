@@ -16,7 +16,12 @@
         {% for post in posts %}
             {% if post.image != "null" %}
             <!-- <div class="postWithImage gridItem" style="background-image: url({% static post.image %}) "> -->
-            <div class=" gridItem">      
+            <div class=" gridItem">     
+                <div class="topDate">
+                    <div class="topDateDay">{{ post.created_on.date.day }}</div>
+                    <div class="topDateMonth">{% getDateMonth post.created_on.date %}</div>
+                    <div class="topDateYear">{{ post.created_on.date.year }}</div>
+                </div> 
                 <div class="imageAndTitle">
                     <img src="{% static post.image %}" style="width: 100%" class="postImage" />        
                     <!-- <div class="postInfoDate">
@@ -31,7 +36,7 @@
                     </div>
                 </div> 
                      <div class="postInfoDate">
-                            {% getDateMonth post.created_on.date %} | |&nbsp;Categories:&nbsp;{% for category in post.categories.all %}
+                            Categories:&nbsp;{% for category in post.categories.all %}
                                 <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
                             {% endfor %}
                        </div>
@@ -40,12 +45,17 @@
                 </div> 
             </div>
             {% else %}
-                <div class="gridItem" style="height: 250px">
+                <div class="gridItem" style="height: 300px">
+                    <div class="topDate topDateNoImg">
+                        <div class="topDateDay">{{ post.created_on.date.day }}</div>
+                        <div class="topDateMonth">{% getDateMonth post.created_on.date %}</div>
+                        <div class="topDateYear">{{ post.created_on.date.year }}</div>
+                    </div> 
                     <div class="textOnlyTitle">
                         <a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a>
                     </div>
-                    <div class="postInfoDate">
-                        {{ post.created_on.date }} |&nbsp;Categories:&nbsp;{% for category in post.categories.all %}
+                    <div class="postInfoDate postInfoDateTextOnly">
+                        Categories:&nbsp;{% for category in post.categories.all %}
                             <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
                         {% endfor %}
                    </div>
