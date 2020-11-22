@@ -36,12 +36,12 @@
                     </div>
                 </div> 
                      <div class="postInfoDate">
-                            Categories:&nbsp;{% for category in post.categories.all %}
+                            <span style="font-weight: 600">Categories:</span>&nbsp;{% for category in post.categories.all %}
                                 <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
                             {% endfor %}
                        </div>
                  <div class="blurb">
-                    {{ post.body | slice:":180" }}...
+                    {{ post.description | slice:":180" }}...
                 </div> 
             </div>
             {% else %}
@@ -55,12 +55,12 @@
                         <a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a>
                     </div>
                     <div class="postInfoDate postInfoDateTextOnly">
-                        Categories:&nbsp;{% for category in post.categories.all %}
+                        <span style="font-weight: 600">Categories:</span>&nbsp;{% for category in post.categories.all %}
                             <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
                         {% endfor %}
                    </div>
                    <div class="blurb">
-                    {{ post.body | slice:":180" }}...
+                    {{ post.description | slice:":180" }}...
                     </div> 
                     <!-- <div class="postInfoDate">
                         {{ post.created_on.date }} |&nbsp;
@@ -78,4 +78,5 @@
         {% endfor %}
     </div>
 </div>
+{% include "pagination.html" with page=posts %}
 {% endblock %}

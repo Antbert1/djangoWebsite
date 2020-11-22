@@ -24,7 +24,7 @@
   align-content: space-between;
   /* Your container needs a fixed height, and it 
    * needs to be taller than your tallest column. */
-  height: 2000px;
+  height: 2200px;
   
   /* Optional */
   /* background-color: #f7f7f7;

@@ -8,6 +8,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
+    description = models.TextField(default="")
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=False)
     last_modified = models.DateTimeField(auto_now=True)
