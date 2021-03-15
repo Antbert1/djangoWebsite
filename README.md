@@ -7,3 +7,5 @@ Note: May have to run cmd as an admin
 -Start server using python3 manage.py runserver
 
 To quit venv: deactivate
+
+Log In via: localhost/admin/

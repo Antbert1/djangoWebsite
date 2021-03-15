@@ -13,6 +13,11 @@
 	margin-top:-20px;
 } */
 
+.dividingLine {
+  border-top: 1px solid #8a8a8a;
+  padding-bottom: 20px;
+}
+
 .twitter {
   display: flex;
   justify-content: flex-end;
@@ -28,8 +33,8 @@
 }
 
 .topBar {
-  background: white;
-  margin-bottom: 20px;
+  /* background: white; */
+  /* margin-bottom: 20px; */
 }
 
 .categoryUnderline {
@@ -40,17 +45,17 @@
   display: flex;
   flex-flow: column wrap;
   align-content: space-between;
-  /* Your container needs a fixed height, and it 
+  /* Your container needs a fixed height, and it
    * needs to be taller than your tallest column. */
   height: 2066px;
-  
+
   /* Optional */
   /* background-color: #f7f7f7;
   border-radius: 3px;
   padding: 20px;
   width: 60%;
   margin: 40px auto;*/
-  counter-reset: items; 
+  counter-reset: items;
 }
 
 .gridItem {
@@ -67,9 +72,9 @@
 
 .topDate {
   display: flex;
-  right: 2;
+  left: 5;
+  top: 5;
   position: absolute;
-  top: 2px;
   z-index: 2;
   flex-direction: column;
   align-items: center;
@@ -77,6 +82,10 @@
   /* border: 2px solid rgb(72,72,72); */
   /* font-weight: 600; */
   color: rgb(44, 44, 44);
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 10px;
+  font-weight: 700;
 }
 
 .topDateNoImg {
@@ -96,6 +105,35 @@
   padding-right: 2px;
   /* background: rgb(72,72,72);
   color: white; */
+}
+
+.catDiv {
+  display: flex;
+  flex-direction: row;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+}
+
+.blogCat {
+  background-color: #8a8a8a;
+  margin-right: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 15px;
+}
+
+.blogCat a {
+  text-decoration: none !important;
+  color: white;
+  /* color: #e8e8e8; */
+}
+
+.blogCat a:hover {
+    color: #e8e8e8;
+    text-decoration:none;
 }
 
 .gridItem::before {
@@ -126,7 +164,7 @@
 }
 
 
-body { 
+body {
   background: rgb(241, 241, 241);
   font-family: sans-serif;
  }
@@ -166,16 +204,18 @@ h3 { text-align: center; }
 }
 
 .postWithImage {
-  min-height: 400px; 
-  background-repeat: no-repeat; 
-  display: flex; 
-  flex-direction: column; 
+  min-height: 400px;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
   justify-content: flex-end
 }
 
 .textOnlyTitle {
   max-width: 90%;
-   padding: 15px;
+   padding-left: 15px;
+   padding-right: 15px;
+   padding-top: 30px;
    /* padding-left: 50px; */
 }
 
@@ -187,13 +227,15 @@ h3 { text-align: center; }
   /* position: absolute;
   bottom: 0; */
   z-index: 1;
-  background: rgba(0,0,0,0.8);
+  /* background: rgba(0,0,0,0.8); */
   /* width: 100%; */
   color: white;
   position: absolute;
   width: 100%;
   bottom: 0;
   padding: 10px;
+  padding-top: 40px;
+  background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgba(0,0,0,1));
 }
 
 .postInfoDate {
@@ -207,6 +249,7 @@ h3 { text-align: center; }
 .postInfoTitle a {
   color: white !important;
   font-size: 20px;
+  font-weight: 200 !important;
 }
 
 .postInfoDateTextOnly {
