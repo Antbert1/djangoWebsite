@@ -13,7 +13,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=False)
     last_modified = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField('Category', related_name='posts')
-    image = models.FileField(
+    image = models.ImageField(
     upload_to = 'img',
     default="null")
 
@@ -23,5 +23,5 @@ class Post(models.Model):
 class Comment(models.Model):
     author = models.CharField(max_length=60)
     body = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(auto_now_add=False)
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
