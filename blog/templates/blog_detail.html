@@ -40,12 +40,17 @@
         </form>
         <h3>Comments:</h3>
         {% for comment in comments %}
-        <p>
-            On {{comment.created_on.date }}&nbsp;
-            <b>{{ comment.author }}</b> wrote:
-        </p>
-        <p>{{ comment.body }}</p>
-        <hr>
+          {% if comment.allowed %}
+          <div>
+            <p>
+                On {{comment.created_on.date }}&nbsp;
+                <b>{{ comment.author }}</b> wrote:
+            </p>
+            <p>{{ comment.body }}</p>
+            <hr>
+          </div>
+          {% endif %}
+
         {% endfor %}
     </div>
 </div>
