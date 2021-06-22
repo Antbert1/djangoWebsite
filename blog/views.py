@@ -41,11 +41,11 @@ def blog_category(request, category):
         "category": category,
         "posts": posts
     }
-    return render(request, "blog_category.html", context) 
+    return render(request, "blog_category.html", context)
 
 def blog_detail(request, pk):
     post = Post.objects.get(pk=pk)
-
+    new_comment = False
     form = CommentForm()
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -56,7 +56,8 @@ def blog_detail(request, pk):
                 post=post
             )
             comment.save()
-        else: 
+            new_comment = True
+        else:
             form = CommentForm()
 
     comments = Comment.objects.filter(post=post)
@@ -64,5 +65,6 @@ def blog_detail(request, pk):
         "post": post,
         "comments": comments,
         "form": form,
+        "new_comment": new_comment
     }
     return render(request, "blog_detail.html", context)

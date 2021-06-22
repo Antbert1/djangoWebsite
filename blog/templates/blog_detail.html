@@ -37,6 +37,11 @@
                 {{ form.body }}
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            {% if new_comment %}
+              <div class="commentSubmitted">
+                Thank you, your comment is now in review
+              </div>
+            {% endif %}
         </form>
         <h3>Comments:</h3>
         {% for comment in comments %}
