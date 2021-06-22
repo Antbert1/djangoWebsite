@@ -1,3 +1,4 @@
+from .models import Comment
 from django import forms
 from captcha.fields import CaptchaField
 
@@ -15,7 +16,7 @@ class CommentForm(forms.Form):
             "placeholder": "Leave a comment"
         })
     )
-    captcha = CaptchaField(
-        label="What does this say?",
-        required=True,
-    )    
+    # captcha = CaptchaField(
+    #     label="What does this say?",
+    #     required=True,
+    # )
