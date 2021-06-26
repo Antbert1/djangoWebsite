@@ -25,7 +25,14 @@
 }
 
 .paddingFix {
+  display: flex;
+  justify-content: space-between;
   padding-left: 0;
+  align-items: center;
+}
+
+.postCats {
+  display: flex;
 }
 
 .postTitle {
@@ -47,7 +54,7 @@
   align-content: space-between;
   /* Your container needs a fixed height, and it
    * needs to be taller than your tallest column. */
-  height: 2066px;
+  height: 2110px;
 
   /* Optional */
   /* background-color: #f7f7f7;
@@ -113,6 +120,7 @@
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 15px;
+  flex-wrap: wrap;
 }
 
 .blogCat {
@@ -127,7 +135,7 @@
 
 .blogCat a {
   text-decoration: none !important;
-  color: white;
+  color: white !important;
   /* color: #e8e8e8; */
 }
 
@@ -145,6 +153,10 @@
 .gridItem:nth-child(3n+1) { order: 1; }
 .gridItem:nth-child(3n+2) { order: 2; }
 .gridItem:nth-child(3n)   { order: 3; }
+
+/* .gridItem:nth-child(2n+1) { order: 1; }
+.gridItem:nth-child(2n) { order: 2; } */
+/* .gridItem:nth-child(3n)   { order: 3; } */
 
 /* Force new columns */
 .gridContainer::before,
@@ -1047,26 +1059,36 @@ tr:hover {
 .shareSection {
 	padding-top: 20px;
 }
+
+.commentTitle {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.btn-override {
+  background-color: black;
+  border: none;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
 /*Media Queries*/
-@media only screen and (max-width: 800px) {
-  .logoSection a{
-    margin-left:40px;
-  }
-  .navSection a{
-    margin-left:40px;
-  }
-}
 
-@media only screen and (max-width: 555px) {
-    .normalScreenSize {
-			display:none;
-		}
-}
 
-@media only screen and (min-width: 555px) {
-    .smallScreenSize {
-			display:none;
-		}
+
+@media only screen and (max-width: 1200px) {
+  .gridItem:nth-child(2n+1) { order: 1; }
+  .gridItem:nth-child(2n) { order: 2; }
+  .gridContainer {
+    height: 3420px;
+  }
+  .gridItem {
+    width: 48%;
+  }
+
+  .imageAndTitle img {
+    max-width: none;
+  }
 }
 
 @media only screen and (max-width: 992px) {
@@ -1083,6 +1105,39 @@ tr:hover {
 			font-size: 16px;
 		}
 }
+
+
+@media only screen and (max-width: 800px) {
+  .logoSection a{
+    margin-left:40px;
+  }
+  .navSection a{
+    margin-left:40px;
+  }
+
+  /* .gridItem:nth-child(2n+1) { order: 1; } */
+  .gridItem:nth-child(1n) { order: 1; }
+  .gridContainer {
+    height: 7750px;
+  }
+  .gridItem {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 555px) {
+    .normalScreenSize {
+			display:none;
+		}
+}
+
+@media only screen and (min-width: 555px) {
+    .smallScreenSize {
+			display:none;
+		}
+}
+
+
 
 @media only screen and (max-width: 416px) {
     #logo {

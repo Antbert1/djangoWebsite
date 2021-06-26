@@ -9,13 +9,16 @@
     </div>
     <div class="row">
         <div class="col-md-12 paddingFix">
-            {{ post.created_on.date }} |&nbsp;
-            Categories:&nbsp;
+          <div>
+            {{ post.created_on.date }}
+          </div>
+          <div class="postCats">
             {% for category in post.categories.all %}
-            <a href="{% url 'blog_category' category.name %}" class="categoryUnderline">
-                {{ category.name }}
-            </a>&nbsp;
+            <div class="blogCat">
+              <a href="{% url 'blog_category' category.name %}" class="categoryUnderline">{{ category.name }}</a>
+            </div>
             {% endfor %}
+          </div>
         </div>
     </div>
 <div class="row">
@@ -26,8 +29,8 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <h3>Leave a comment:</h3>
+    <div class="col-md-12 leaveComment">
+        <div class="commentTitle">Leave a Comment:</div>
         <form action="/{{ post.pk }}/" method="post">
             {% csrf_token %}
             <div class="form-group">
@@ -38,15 +41,16 @@
             </div>
 
             <div class="g-recaptcha" data-sitekey="6LeuJE4bAAAAADeGHlLZ-E01UfpbqhArJtTn0sdo"></div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary btn-override">SUBMIT</button>
             {% if new_comment %}
               <div class="commentSubmitted">
                 Thank you, your comment is now in review
               </div>
             {% endif %}
         </form>
-        <h3>Comments:</h3>
+
         {% for comment in comments %}
+
           {% if comment.allowed %}
           <div>
             <p>

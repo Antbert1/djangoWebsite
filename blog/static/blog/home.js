@@ -8,6 +8,10 @@
 //   columnWidth: 200
 // });
 
+function changePage() {
+  // debugger;
+}
+
 var div = document.getElementById("dom-target");
 try {
     var numRows = div.textContent.replace(/\s+/, "");
@@ -85,5 +89,6 @@ $('.launch-subscribe').click(function(e){
 $('.cancelBtn').click(function() {
   $('#deleteModal').modal('hide');
 })
+
   //
   // "<li><a href='.?action=page&amp;startPoint="+pageNum+"'>"+pageNum+"</a></li>"

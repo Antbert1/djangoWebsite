@@ -13,6 +13,7 @@ def blog_index(request):
     object_list = Post.objects.all().order_by('-created_on')
     paginator = Paginator(object_list, 12) # 12 posts in each page
     page = request.GET.get('page')
+
     try:
        posts = paginator.page(page)
     except PageNotAnInteger:
@@ -27,7 +28,8 @@ def blog_index(request):
     #                 'posts': posts})
     context = {
         "page": page,
-        "posts": posts
+        "posts": posts,
+        "postsLength": len(posts)
     }
     return render(request, "blog_index.html", context)
 
