@@ -299,8 +299,8 @@ a:visited, a:focus {
 }
 
 .btn {
-	background-color: #db0d66;
-	border-color: #db0d66;
+	background-color: #f0b70c;
+	border-color: #f0b70c;
 	transition-duration: 0.2s;
 }
 
@@ -380,7 +380,7 @@ a:hover {
     top: 0;
     color: white;
     padding: 6px;
-    background-color: #db0d66;
+    background-color: #f0b70c;
     text-align: center;
   }
 
@@ -449,7 +449,7 @@ a:hover {
 
 .postRow a {
 	text-decoration: underline;
-	color: #db0d66;
+	color: #f0b70c;
 }
 
 .imgCaption {
@@ -483,7 +483,7 @@ a:hover {
 }
 
 .ext_link {
-  color: #db0d66;
+  color: #f0b70c;
 }
 
 .divider {
@@ -531,7 +531,7 @@ a:hover {
 .cat-dropdown-button {
 	cursor: pointer;
 	padding: 5px;
-	border-bottom: 2px solid #db0d66;
+	border-bottom: 2px solid #f0b70c;
 }
 
 .cat-dropdown-div {
@@ -539,8 +539,8 @@ a:hover {
 }
 
 .normalScreenSize .activeLI {
-	background-color: #db0d66;
-	border: 1px solid #db0d66;
+	background-color: #f0b70c;
+	border: 1px solid #f0b70c;
 	border-radius: 2px;
 }
 
@@ -663,7 +663,7 @@ a:hover {
 	margin-top: 70px;
 	margin-bottom: 20px;
 	text-align: center;
-	border: 1px solid #db0d66;
+	border: 1px solid #f0b70c;
 	padding: 20px;
 }
 
@@ -1066,11 +1066,68 @@ tr:hover {
 }
 
 .btn-override {
-  background-color: black;
+  background-color: #f0b70c;
   border: none;
   font-weight: 500;
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+.dropdownBtn {
+  background-color: white;
+  margin-right: 10px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu {
+  min-width: 40px;
+}
+
+.dropdownItem {
+  text-align: center;
+}
+
+.nextPrev {
+  text-decoration: underline;
+}
+
+.fa-twitter {
+  font-size: 30px;
+  margin-right: 20px;
+}
+
+.fa-filter {
+  font-size: 25px;
+}
+
+.catRow {
+  display: flex;
+}
+
+.postTitleCat {
+  font-size: 25;
+}
+
+.categoryBlurb {
+  margin-bottom: 20px;
+}
+
+.catPostBlurb {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.catPostNoImg {
+  margin-left: 15px;
+}
+
+.catPostNoImg .postRow {
+  padding-bottom: 20px;
 }
 /*Media Queries*/
 

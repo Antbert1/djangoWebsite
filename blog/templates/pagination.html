@@ -1,13 +1,22 @@
 <div class="pagination">
-    <span class="step-links">
-      {% if page.has_previous %}
-        <a href="?page={{ page.previous_page_number }}">Previous</a>
-      {% endif %}
-      <span class="current">
-        Page {{ page.number }} of {{ page.paginator.num_pages }}.
-      </span>
-        {% if page.has_next %}
-          <a href="?page={{ page.next_page_number }}">Next</a>
-        {% endif %}
+  <div class="dropdown">
+    <button class="btn dropdownBtn" type="button" data-toggle="dropdown">Select Page
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      {% for i in pagesCount %}
+      <a href="?page={{ i }}"><li class="dropdownItem">{{i}}</li></a>
+      {% endfor %}
+    </ul>
+  </div>
+  <span class="step-links">
+    {% if page.has_previous %}
+      <a href="?page={{ page.previous_page_number }}" class="nextPrev"><i class="fas fa-chevron-left"></i> Previous</a>
+    {% endif %}
+    <span class="current">
+      Page {{ page.number }} of {{ page.paginator.num_pages }}
     </span>
+      {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}" class="nextPrev"> Next <i class="fas fa-chevron-right"></i></a>
+      {% endif %}
+  </span>
    </div>

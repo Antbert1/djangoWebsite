@@ -1,3 +1,4 @@
+import math
 from django.shortcuts import render
 from blog.models import Post, Comment
 from .forms import CommentForm
@@ -26,10 +27,12 @@ def blog_index(request):
     #                 'blog/post_list.html',
     #                 {'page': page,
     #                 'posts': posts})
+    pagesCount = int(math.ceil(len(object_list)/12))
     context = {
         "page": page,
         "posts": posts,
-        "postsLength": len(posts)
+        "postsLength": len(posts),
+        "pagesCount": range(1,pagesCount+1)
     }
     return render(request, "blog_index.html", context)
 
