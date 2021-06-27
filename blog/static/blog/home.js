@@ -8,8 +8,17 @@
 //   columnWidth: 200
 // });
 
-function changePage() {
-  // debugger;
+function changePage(page) {
+  var pathName = '/' + window.location.pathname.split('/')[1];
+// if ( pathName != '/' ) { pathName = pathName + '/'; }
+  debugger;
+  // if (page == 0) {
+  //   $(".menuItem0").addClass("activeMenuItem");
+  //   $(".menuItem1").removeClass("activeMenuItem");
+  // } else {
+  //   $(".menuItem1").addClass("activeMenuItem");
+  //   $(".menuItem0").removeClass("activeMenuItem");
+  // }
 }
 
 var div = document.getElementById("dom-target");

@@ -13,6 +13,7 @@ def about(request):
 def test(request):
     return render(request, "test.html")
 
+
 def blog_index(request):
     object_list = Post.objects.all().order_by('-created_on')
     catList = Category.objects.all().order_by('-name')

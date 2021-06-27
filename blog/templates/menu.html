@@ -1,0 +1,27 @@
+{% load static %}
+<section class="topBar">
+    <div class="container">
+        <div class="row logo-row">
+            <div class="col-md-12 logo">
+                <a href="{% url 'blog_index' %}">
+                    <img src="{% static '/img/anthea-middleton-logo.png' %}" />
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 menu-row">
+                <div class="menuItem menuItem0 activeMenuItem">
+                    <a href="{% url 'blog_index' %}" onClick="changePage(0)">
+                        {{ test }}
+                    </a>
+                </div>
+                <div class="menuItem menuItem1">
+                    <a href="{% url 'about' %}" onClick="changePage(1)">
+                        About
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
