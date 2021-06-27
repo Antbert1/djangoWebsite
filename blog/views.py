@@ -1,6 +1,6 @@
 import math
 from django.shortcuts import render
-from blog.models import Post, Comment
+from blog.models import Post, Comment, Category
 from .forms import CommentForm
 from django.core.paginator import (
    Paginator, EmptyPage,
@@ -12,6 +12,7 @@ def about(request):
 
 def blog_index(request):
     object_list = Post.objects.all().order_by('-created_on')
+    catList = Category.objects.all().order_by('-name')
     paginator = Paginator(object_list, 12) # 12 posts in each page
     page = request.GET.get('page')
 
@@ -32,7 +33,8 @@ def blog_index(request):
         "page": page,
         "posts": posts,
         "postsLength": len(posts),
-        "pagesCount": range(1,pagesCount+1)
+        "pagesCount": range(1,pagesCount+1),
+        "categories": catList
     }
     return render(request, "blog_index.html", context)
 

@@ -22,6 +22,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-top: -50px;
 }
 
 .paddingFix {
@@ -194,7 +195,6 @@ h3 { text-align: center; }
   display: flex;
   justify-content: flex-start;
   padding-top: 20;
-  padding-bottom: 20;
 }
 
 .menuItem {
@@ -1128,6 +1128,19 @@ tr:hover {
 
 .catPostNoImg .postRow {
   padding-bottom: 20px;
+}
+
+.cat-menu {
+  height: 400px;
+  overflow-y: auto;
+  padding: 20px;
+  /* left: -100% !important; */
+  /* left: -104px !important; */
+}
+
+.catItem {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 /*Media Queries*/
 
