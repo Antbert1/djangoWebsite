@@ -1102,6 +1102,7 @@ tr:hover {
 
 .fa-filter {
   font-size: 25px;
+  cursor: pointer;
 }
 
 .catRow {
@@ -1141,6 +1142,35 @@ tr:hover {
 .catItem {
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.customBtn {
+  background-color: #f0b70c;
+  color: white;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.customBtn:hover {
+  background-color: #f2c849;
+}
+
+.step-links {
+  margin-left: 20px;
+}
+.customBtn:focus {
+  outline: none;
+  border: none;
+}
+
+.next {
+  text-align: right;
+}
+
+.navigationIcons {
+  margin-bottom: 10px;
 }
 /*Media Queries*/
 
