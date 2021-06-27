@@ -13,6 +13,17 @@
 	margin-top:-20px;
 } */
 
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sectionFill {
+  flex-grow: 1;
+}
+
 .dividingLine {
   /* border-top: 1px solid #8a8a8a; */
   padding-bottom: 20px;
@@ -449,6 +460,11 @@ a:hover {
 
 .postRow a {
 	text-decoration: underline;
+	color: #f0b70c;
+}
+
+.pWithLinks a {
+  text-decoration: underline;
 	color: #f0b70c;
 }
 
@@ -1095,9 +1111,25 @@ tr:hover {
   text-decoration: underline;
 }
 
-.fa-twitter {
+.subTitle {
+  font-size: 20px;
+}
+
+.shareSection {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.twitter-menu {
   font-size: 30px;
   margin-right: 20px;
+}
+
+.shareIcon {
+  margin-right: 10px;
+  margin-bottom:  20px;
 }
 
 .fa-filter {
@@ -1171,6 +1203,10 @@ tr:hover {
 
 .navigationIcons {
   margin-bottom: 10px;
+}
+
+.profilePic img {
+  width: 100%;
 }
 /*Media Queries*/
 

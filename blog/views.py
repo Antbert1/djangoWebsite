@@ -8,7 +8,10 @@ from django.core.paginator import (
 )
 
 def about(request):
-    return render(request, "about.html")
+    return render(request, "about.html", {})
+
+def test(request):
+    return render(request, "test.html")
 
 def blog_index(request):
     object_list = Post.objects.all().order_by('-created_on')

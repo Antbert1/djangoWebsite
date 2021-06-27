@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block page_content %}
+{% load social_share %}
 <section class="blogPost">
 <div class="container">
     <div class="row">
@@ -27,6 +28,21 @@
             {{ post.body | safe }}
         </div>
     </div>
+</div>
+<div class="row">
+  <div class="col-md-12 shareSection">
+    <div>
+      {% with base_url="http://localhost:8000" %}
+        <a class="shareIcon" href="https://www.facebook.com/sharer/sharer.php?u={{ base_url|urlencode }}{{ request.get_full_path|urlencode }}&t={{ post.title }}"><i class="fab fa-facebook-f"></i></a>
+      {% endwith %}
+      {% with base_url="http://localhost:8000" %}
+        <a class="shareIcon" href="https://twitter.com/share?text={{ post.title }}&url={{ base_url|urlencode }}{{ request.get_full_path|urlencode}}"><i class="fab fa-twitter"></i></a>
+      {% endwith %}
+      {% with base_url="http://localhost:8000" %}
+        <a class="shareIcon" href="https://www.linkedin.com/shareArticle?mini=true&url={{ base_url|urlencode }}{{ request.get_full_path|urlencode}}"><i class="fab fa-linkedin-in"></i></a>
+      {% endwith %}
+    </div>
+  </div>
 </div>
 <div class="row">
     <div class="col-md-12 leaveComment">

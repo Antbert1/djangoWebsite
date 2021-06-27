@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'captcha',
+    'django_social_share'
 ]
 
 MIDDLEWARE = [
