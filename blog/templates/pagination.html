@@ -13,7 +13,7 @@
       <a href="?page={{ page.previous_page_number }}" class="nextPrev"><i class="fas fa-chevron-left"></i> Previous</a>
     {% endif %}
     <span class="current">
-      Page {{ page.number }} of {{ page.paginator.num_pages }}
+      Page <span class="boldHighlight">{{ page.number }}</span> of {{ page.paginator.num_pages }}
     </span>
       {% if page.has_next %}
         <a href="?page={{ page.next_page_number }}" class="nextPrev"> Next <i class="fas fa-chevron-right"></i></a>

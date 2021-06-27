@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-12 menu-row">
               {% with url_name=request.resolver_match.url_name %}
-                <div class="menuItem {% if url_name == 'blog_index' %}activeMenuItem{% endif %}">
+                <div class="menuItem {% if url_name != 'about' %}activeMenuItem{% endif %}">
                     <a href="{% url 'blog_index' %}">
                         Blog
                     </a>
