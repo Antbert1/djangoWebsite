@@ -25,7 +25,7 @@ SECRET_KEY = '6hw^*(#fnhd9l(z@e3whix+=^**78(5588*%_vf^#4c-j_msao'
 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LeuJE4bAAAAADeGHlLZ-E01UfpbqhArJtTn0sdo'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'personal_portfolio.urls'
@@ -96,7 +97,7 @@ DATABASES = {
 }
 
 
-# DATABASES = {'default': dj_database_url.config(default='sqlite://user:pass@localhost.dbname')}
+DATABASES = {'default': dj_database_url.config(default='postgres://user:Zlx990810@localhost.blog_db')}
 
 
 # Password validation
@@ -147,3 +148,5 @@ VENV_PATH = os.path.dirname(BASE_DIR)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
