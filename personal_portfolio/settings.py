@@ -86,15 +86,15 @@ WSGI_APPLICATION = 'personal_portfolio.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blog_db',
-        'USER': 'postgres',
-        'PASSWORD': 'Zlx990810',
-        'HOST': 'localhost',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'blog_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Zlx990810',
+#         'HOST': 'localhost',
+#     }
+# }
 
 
 DATABASES = {'default': dj_database_url.config(default='postgres://user:Zlx990810@localhost.blog_db')}
@@ -138,8 +138,8 @@ USE_TZ = True
 # STATIC_ROOT = ''
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = ( os.path.join('static'), )
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = ( os.path.join('static'), )
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 
