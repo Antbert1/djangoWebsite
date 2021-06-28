@@ -1,10 +1,94 @@
 {% extends "base.html" %}
 {% block page_content %}
-<div class="col-md-8 offset-md-2">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-6 twitter">
+
+        <a href="https://twitter.com/antheamiddleton" target="_blank">
+            <i class="fab fa-twitter twitter-menu"></i>
+        </a>
+        <div class="dropdown">
+          <a data-toggle="dropdown"><i class="fas fa-filter"></i></a>
+          <ul class="dropdown-menu cat-menu dropdown-menu-right">
+            {% for category in categories %}
+            <a href="{% url 'blog_category' category %}">
+              <li class="catItem">
+                {{ category }}
+              </li>
+            </a>
+            {% endfor %}
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 paddingFix">
+          <div class="postTitle">{{ category | title }}</div>
+      </div>
+    </div>
+    {% for post in posts %}
+    <div class="categoryBlurb">
+      <div class="row">
+          <div class="col-md-12 paddingFix">
+            <div>
+              <div class="postTitleCat">
+                <a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a>
+              </div>
+              <div>
+                {{ post.created_on.date }}
+              </div>
+            </div>
+
+          </div>
+          {% if post.image != "null" %}
+          <div class="row">
+            <div class="col-md-4">
+              <img src="{{ post.image.url }}" style="width: 100%" class="postImage" />
+            </div>
+            <div class="col-md-8 catPostBlurb">
+              <div class="row postRow">
+                  {{ post.description }}... <a href="{% url 'blog_detail' post.pk%}">Read More <i class="fas fa-chevron-right"></i></a>
+              </div>
+              <div class="postCats">
+                {% for category in post.categories.all %}
+                <div class="blogCat">
+                  <a href="{% url 'blog_category' category.name %}" class="categoryUnderline">{{ category.name }}</a>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% else %}
+          <div class="row">
+            <div class="col-md-12 catPostBlurb catPostNoImg">
+              <div class="row postRow">
+                  {{ post.description }}... <a href="{% url 'blog_detail' post.pk%}">Read More <i class="fas fa-chevron-right"></i></a>
+              </div>
+              <div class="postCats">
+                {% for category in post.categories.all %}
+                <div class="blogCat">
+                  <a href="{% url 'blog_category' category.name %}" class="categoryUnderline">{{ category.name }}</a>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        </div>
+        <div class="divider"></div>
+      {% endfor %}
+    </div>
+
+<!-- <div class="col-md-8 offset-md-2">
     <h1>{{ category | title }}</h1>
     <hr>
     {% for post in posts %}
         <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
+
         <small>
             {{ post.created_on.date }} |&nbsp;
             Categories:&nbsp;
@@ -14,7 +98,7 @@
             </a>&nbsp;
             {% endfor %}
         </small>
-        <p>{{ post.body | slice:":400" }}...</p>
+        <p>{{ post.description | slice:":180" }}...</p>
     {% endfor %}
-</div>
+</div> -->
 {% endblock %}

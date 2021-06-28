@@ -1,36 +1,90 @@
 {% extends "base.html" %}
 {% block page_content %}
-<div class="col-md-8 offset-md-2">
-    <h1>{{ post.title }}</h1>
-    <small>
-        {{ post.created_on.date }} |&nbsp;
-        Categories:&nbsp;
-        {% for category in post.categories.all %}
-        <a href="{% url 'blog_category' category.name %}">
-            {{ category.name }}
-        </a>&nbsp;
-        {% endfor %}
-    </small>
-    <p>{{ post.body | safe }}</p>
-    <h3>Leave a comment:</h3>
-    <form action="/blog/{{ post.pk }}/" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            {{ form.author }}
+{% load social_share %}
+<section class="blogPost">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 paddingFix">
+            <div class="postTitle">{{ post.title }}</div>
         </div>
-        <div class="form-group">
-            {{ form.body }}
+    </div>
+    <div class="row">
+        <div class="col-md-12 paddingFix">
+          <div>
+            {{ post.created_on.date }}
+          </div>
+          <div class="postCats">
+            {% for category in post.categories.all %}
+            <div class="blogCat">
+              <a href="{% url 'blog_category' category.name %}" class="categoryUnderline">{{ category.name }}</a>
+            </div>
+            {% endfor %}
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <h3>Comments:</h3>
-    {% for comment in comments %}
-    <p>
-        On {{comment.created_on.date }}&nbsp;
-        <b>{{ comment.author }}</b> wrote:
-    </p>
-    <p>{{ comment.body }}</p>
-    <hr>
-    {% endfor %}
+    </div>
+<div class="row">
+    <div class="col-md-12 blog-content-row">
+        <div class="row postRow">
+            {{ post.body | safe }}
+        </div>
+    </div>
 </div>
+<div class="row">
+  <div class="col-md-12 shareSection">
+    <div>
+      {% with base_url="http://localhost:8000" %}
+        <a class="shareIcon" href="https://www.facebook.com/sharer/sharer.php?u={{ base_url|urlencode }}{{ request.get_full_path|urlencode }}&t={{ post.title }}"><i class="fab fa-facebook-f"></i></a>
+      {% endwith %}
+      {% with base_url="http://localhost:8000" %}
+        <a class="shareIcon" href="https://twitter.com/share?text={{ post.title }}&url={{ base_url|urlencode }}{{ request.get_full_path|urlencode}}"><i class="fab fa-twitter"></i></a>
+      {% endwith %}
+      {% with base_url="http://localhost:8000" %}
+        <a class="shareIcon" href="https://www.linkedin.com/shareArticle?mini=true&url={{ base_url|urlencode }}{{ request.get_full_path|urlencode}}"><i class="fab fa-linkedin-in"></i></a>
+      {% endwith %}
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-12 leaveComment">
+        <div class="commentTitle">Leave a Comment:</div>
+        <form action="/{{ post.pk }}/" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.author }}
+            </div>
+            <div class="form-group">
+                {{ form.body }}
+            </div>
+
+            <div class="g-recaptcha" data-sitekey="6LeuJE4bAAAAADeGHlLZ-E01UfpbqhArJtTn0sdo"></div>
+            <button type="submit" class="customBtn">SUBMIT</button>
+            {% if new_comment %}
+              <div class="commentSubmitted">
+                Thank you, your comment is now in review
+              </div>
+            {% endif %}
+        </form>
+
+        {% for comment in comments %}
+
+          {% if comment.allowed %}
+          <div>
+            <p>
+                On {{comment.created_on.date }}&nbsp;
+                <b>{{ comment.author }}</b> wrote:
+            </p>
+            <p>{{ comment.body }}</p>
+            <hr>
+          </div>
+          {% endif %}
+
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+</div>
+</section>
 {% endblock %}

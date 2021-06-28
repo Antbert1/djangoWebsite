@@ -1,15 +1,49 @@
+import math
 from django.shortcuts import render
-from blog.models import Post, Comment
+from blog.models import Post, Comment, Category
 from .forms import CommentForm
+from django.core.paginator import (
+   Paginator, EmptyPage,
+   PageNotAnInteger
+)
+
+def about(request):
+    return render(request, "about.html", {})
+
+def test(request):
+    return render(request, "test.html")
+
 
 def blog_index(request):
-    posts = Post.objects.all().order_by('-created_on')
+    object_list = Post.objects.all().order_by('-created_on')
+    catList = Category.objects.all().order_by('-name')
+    paginator = Paginator(object_list, 12) # 12 posts in each page
+    page = request.GET.get('page')
+
+    try:
+       posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer deliver the first page
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range deliver last page of results
+        posts = paginator.page(paginator.num_pages)
+    # return render(request,
+    #                 'blog/post_list.html',
+    #                 {'page': page,
+    #                 'posts': posts})
+    pagesCount = int(math.ceil(len(object_list)/12))
     context = {
+        "page": page,
         "posts": posts,
+        "postsLength": len(posts),
+        "pagesCount": range(1,pagesCount+1),
+        "categories": catList
     }
     return render(request, "blog_index.html", context)
 
 def blog_category(request, category):
+    catList = Category.objects.all().order_by('-name')
     posts = Post.objects.filter(
         categories__name__contains=category
     ).order_by(
@@ -17,13 +51,14 @@ def blog_category(request, category):
     )
     context = {
         "category": category,
-        "posts": posts
+        "posts": posts,
+        "categories": catList
     }
-    return render(request, "blog_category.html", context) 
+    return render(request, "blog_category.html", context)
 
 def blog_detail(request, pk):
     post = Post.objects.get(pk=pk)
-
+    new_comment = False
     form = CommentForm()
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -34,11 +69,15 @@ def blog_detail(request, pk):
                 post=post
             )
             comment.save()
+            new_comment = True
+        else:
+            form = CommentForm()
 
     comments = Comment.objects.filter(post=post)
     context = {
         "post": post,
         "comments": comments,
         "form": form,
+        "new_comment": new_comment
     }
     return render(request, "blog_detail.html", context)
