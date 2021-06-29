@@ -1,6 +1,6 @@
 from .models import Comment
 from django import forms
-from captcha.fields import CaptchaField
+# from captcha.fields import CaptchaField
 
 class CommentForm(forms.Form):
     author = forms.CharField(
