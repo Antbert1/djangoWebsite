@@ -16,6 +16,7 @@ class Post(models.Model):
     image = models.ImageField(
     upload_to = 'img',
     default="null")
+    image_path = models.CharField(max_length=255, default="")
 
     def __str__(self):
         return self.title
