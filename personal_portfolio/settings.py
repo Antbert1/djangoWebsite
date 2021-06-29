@@ -25,7 +25,7 @@ SECRET_KEY = '6hw^*(#fnhd9l(z@e3whix+=^**78(5588*%_vf^#4c-j_msao'
 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LeuJE4bAAAAADeGHlLZ-E01UfpbqhArJtTn0sdo'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -85,18 +85,18 @@ WSGI_APPLICATION = 'personal_portfolio.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'blog_db',
-#         'USER': 'postgres',
-#         'PASSWORD': 'Zlx990810',
-#         'HOST': 'localhost',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog_db',
+        'USER': 'postgres',
+        'PASSWORD': 'Zlx990810',
+        'HOST': 'localhost',
+    }
+}
 
 
-DATABASES = {'default': dj_database_url.config(default='postgres://user:Zlx990810@localhost.blog_db')}
+# DATABASES = {'default': dj_database_url.config(default='postgres://user:Zlx990810@localhost.blog_db')}
 
 
 # Password validation
