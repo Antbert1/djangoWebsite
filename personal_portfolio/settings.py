@@ -27,7 +27,7 @@ SECRET_KEY = '6hw^*(#fnhd9l(z@e3whix+=^**78(5588*%_vf^#4c-j_msao'
 RECAPTCHA_PUBLIC_KEY = '6LeuJE4bAAAAAGeH4czj4lu4PnwzzottMi657MU6'
 RECAPTCHA_PRIVATE_KEY = '6LeuJE4bAAAAADeGHlLZ-E01UfpbqhArJtTn0sdo'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['protected-beyond-71115.herokuapp.com', 'antheamiddleton.com', 'www.antheamiddleton.com']
 
