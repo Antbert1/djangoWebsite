@@ -29,7 +29,7 @@ RECAPTCHA_PRIVATE_KEY = '6LeuJE4bAAAAADeGHlLZ-E01UfpbqhArJtTn0sdo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['protected-beyond-71115.herokuapp.com/', 'antheamiddleton.com', 'www.antheamiddleton.com']
+ALLOWED_HOSTS = ['protected-beyond-71115.herokuapp.com', 'antheamiddleton.com', 'www.antheamiddleton.com']
 
 
 # Application definition
