@@ -83,26 +83,24 @@ WSGI_APPLICATION = 'personal_portfolio.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'blog_db',
-#         'USER': 'postgres',
-#         'PASSWORD': 'Zlx990810',
-#         'HOST': 'localhost',
-#     }
-# }
+if RUNNING_DEVSERVER:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'blog_db',
+            'USER': 'postgres',
+            'PASSWORD': 'Zlx990810',
+            'HOST': 'localhost',
+        }
+    }
+else:
+    DATABASES = {'default': dj_database_url.config(default='postgres://user:Zlx990810@localhost.blog_db')}
 
 
-DATABASES = {'default': dj_database_url.config(default='postgres://user:Zlx990810@localhost.blog_db')}
+
+
+
+# DATABASES = {'default': dj_database_url.config(default='postgres://user:Zlx990810@localhost.blog_db')}
 
 
 # Password validation
