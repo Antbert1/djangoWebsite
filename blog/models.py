@@ -18,6 +18,10 @@ class Post(models.Model):
     default="null")
     image_path = models.CharField(max_length=255, default="")
     ordering = ['last_modified']
+
+    class Meta:
+        ordering = ['-created_on']
+        
     def __str__(self):
         return self.title
 
