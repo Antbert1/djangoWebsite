@@ -13,23 +13,35 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path, os
 import dj_database_url
 import sys
+import dotenv
+
+
 
 RUNNING_DEVSERVER = (len(sys.argv) > 1 and sys.argv[1] == 'runserver')
 print("dev server {}".format(RUNNING_DEVSERVER))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6hw^*(#fnhd9l(z@e3whix+=^**78(5588*%_vf^#4c-j_msao'
+# SECRET_KEY = '6hw^*(#fnhd9l(z@e3whix+=^**78(5588*%_vf^#4c-j_msao'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # GOOGLE_RECAPTCHA_SECRET_KEY = '6LeuJE4bAAAAADeGHlLZ-E01UfpbqhArJtTn0sdo'
-RECAPTCHA_PUBLIC_KEY = '6LeuJE4bAAAAAGeH4czj4lu4PnwzzottMi657MU6'
-RECAPTCHA_PRIVATE_KEY = '6LeuJE4bAAAAADeGHlLZ-E01UfpbqhArJtTn0sdo'
+# RECAPTCHA_PUBLIC_KEY = '6LeuJE4bAAAAAGeH4czj4lu4PnwzzottMi657MU6'
+# RECAPTCHA_PRIVATE_KEY = '6LeuJE4bAAAAADeGHlLZ-E01UfpbqhArJtTn0sdo'
+RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
+RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -80,6 +92,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'personal_portfolio.wsgi.application'
 
+dbStr = os.environ['DB_USERNAME']+"://user:"+os.environ['DB_PW']+"@localhost.blog_db"
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -88,13 +101,13 @@ if RUNNING_DEVSERVER:
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'blog_db',
-            'USER': 'postgres',
-            'PASSWORD': 'Zlx990810',
+            'USER': os.environ['DB_USERNAME'],
+            'PASSWORD': os.environ['DB_PW'],
             'HOST': 'localhost',
         }
     }
 else:
-    DATABASES = {'default': dj_database_url.config(default='postgres://user:Zlx990810@localhost.blog_db')}
+    DATABASES = {'default': dj_database_url.config(default=dbStr)}
 
 
 
