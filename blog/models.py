@@ -17,7 +17,7 @@ class Post(models.Model):
     upload_to = 'img',
     default="null")
     image_path = models.CharField(max_length=255, default="")
-
+    ordering = ['last_modified']
     def __str__(self):
         return self.title
 
