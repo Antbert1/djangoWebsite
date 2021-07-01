@@ -7,15 +7,15 @@
             <div class="postTitle">{{ post.title }}</div>
         </div>
     </div>
-    <div class="row">
+    <div class="row nextPrevIcons">
         <div class="col-md-6 paddingFix">
             {% if prevVal != None %}
-            Previous
+            <a href="{% url 'blog_detail' prevVal %}"><i class="fas fa-chevron-left"></i> Previous</a>
             {% endif %}
         </div>
-        <div class="col-md-6 paddingFix">
+        <div class="col-md-6 nextIcon">
             {% if nextVal != None %}
-            Next
+            <a href="{% url 'blog_detail' nextVal %}">Next <i class="fas fa-chevron-right"></i></a>
             {% endif %}
         </div>
     </div>

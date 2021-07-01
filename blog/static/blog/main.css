@@ -1215,6 +1215,20 @@ tr:hover {
 .profilePic img {
   width: 100%;
 }
+
+.nextIcon {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nextPrevIcons {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.nextPrevIcons a {
+  font-weight: 700;
+}
 /*Media Queries*/
 
 
