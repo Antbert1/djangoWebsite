@@ -8,6 +8,18 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-6 paddingFix">
+            {% if prevVal != None %}
+            Previous
+            {% endif %}
+        </div>
+        <div class="col-md-6 paddingFix">
+            {% if nextVal != None %}
+            Next
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12 paddingFix">
           <div>
             {{ post.created_on.date }}

@@ -57,6 +57,17 @@ def blog_category(request, category):
     return render(request, "blog_category.html", context)
 
 def blog_detail(request, pk):
+    all_posts = Post.objects.all().order_by('-created_on')
+
+    prevVal = None
+    nextVal = None
+    for i, item in enumerate(all_posts):
+      if item.pk == pk:
+          if (i > 0):
+              prevVal = all_posts[i-1].pk
+          if (i < len(all_posts)-1):
+              nextVal = all_posts[i+1].pk
+
     post = Post.objects.get(pk=pk)
     new_comment = False
     form = CommentForm()
@@ -78,6 +89,8 @@ def blog_detail(request, pk):
         "post": post,
         "comments": comments,
         "form": form,
-        "new_comment": new_comment
+        "new_comment": new_comment,
+        "prevVal": prevVal,
+        "nextVal": nextVal
     }
     return render(request, "blog_detail.html", context)
