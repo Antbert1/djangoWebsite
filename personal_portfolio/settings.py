@@ -43,7 +43,10 @@ RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
 RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+if RUNNING_DEVSERVER:
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ['protected-beyond-71115.herokuapp.com', 'antheamiddleton.com', 'www.antheamiddleton.com', 'localhost']
 

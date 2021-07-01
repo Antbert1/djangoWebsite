@@ -6,6 +6,8 @@ from django.core.paginator import (
    Paginator, EmptyPage,
    PageNotAnInteger
 )
+import os
+import requests
 
 def about(request):
     return render(request, "about.html", {})
@@ -56,6 +58,17 @@ def blog_category(request, category):
     }
     return render(request, "blog_category.html", context)
 
+def grecaptcha_verify(request):
+    data = request.POST
+    captcha_rs = data.get('g-recaptcha-response')
+    url = "https://www.google.com/recaptcha/api/siteverify"
+    headers = {'User-Agent': 'DebuguearApi-Browser',}
+    params = {'secret': os.environ['RECAPTCHA_PRIVATE_KEY'], 'response': captcha_rs}
+    verify_rs = requests.post(url,params, headers=headers)
+    verify_rs = verify_rs.json()
+    response = verify_rs.get("success", False)
+    return response
+
 def blog_detail(request, pk):
     all_posts = Post.objects.all().order_by('-created_on')
 
@@ -72,17 +85,19 @@ def blog_detail(request, pk):
     new_comment = False
     form = CommentForm()
     if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = Comment(
-                author=form.cleaned_data["author"],
-                body=form.cleaned_data["body"],
-                post=post
-            )
-            comment.save()
-            new_comment = True
-        else:
-            form = CommentForm()
+        response=grecaptcha_verify(request)
+        if response == True :
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                comment = Comment(
+                    author=form.cleaned_data["author"],
+                    body=form.cleaned_data["body"],
+                    post=post
+                )
+                comment.save()
+                new_comment = True
+            else:
+                form = CommentForm()
 
     comments = Comment.objects.filter(post=post)
     context = {
