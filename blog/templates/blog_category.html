@@ -43,10 +43,10 @@
             </div>
 
           </div>
-          {% if post.image != "null" %}
+          {% if post.image_path != "" %}
           <div class="row">
             <div class="col-md-4">
-              <img src="{{ post.image.url }}" style="width: 100%" class="postImage" />
+              <img src="{{ post.image_path }}" style="width: 100%" class="postImage" />
             </div>
             <div class="col-md-8 catPostBlurb">
               <div class="row postRow">
