@@ -70,6 +70,7 @@ def grecaptcha_verify(request):
     return response
 
 def blog_detail(request, pk):
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     all_posts = Post.objects.all().order_by('-created_on')
 
     prevVal = None
@@ -83,12 +84,17 @@ def blog_detail(request, pk):
 
     post = Post.objects.get(pk=pk)
     new_comment = False
+    tryToPost = False
     form = CommentForm()
+
     if request.method == 'POST':
+        tryToPost = True
+        print("IT IS A POST")
         response=grecaptcha_verify(request)
         if response == True :
             form = CommentForm(request.POST)
             if form.is_valid():
+
                 comment = Comment(
                     author=form.cleaned_data["author"],
                     body=form.cleaned_data["body"],
@@ -98,6 +104,9 @@ def blog_detail(request, pk):
                 new_comment = True
             else:
                 form = CommentForm()
+                print("Form is not valid")
+        else:
+            print("CAPTCHA IS FAILING")
 
     comments = Comment.objects.filter(post=post)
     context = {
@@ -106,6 +115,7 @@ def blog_detail(request, pk):
         "form": form,
         "new_comment": new_comment,
         "prevVal": prevVal,
-        "nextVal": nextVal
+        "nextVal": nextVal,
+        "tryToPost": tryToPost
     }
     return render(request, "blog_detail.html", context)

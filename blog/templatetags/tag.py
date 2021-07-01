@@ -5,7 +5,6 @@ register = template.Library()
 @register.simple_tag
 def getDateMonth(dateSent):
     month = dateSent.strftime("%m")
-    print("month" + month)
     # yearDict = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     yearDict = {
         "01": "Jan",

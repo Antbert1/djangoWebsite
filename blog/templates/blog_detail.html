@@ -74,6 +74,11 @@
                 Thank you, your comment is now in review
               </div>
             {% endif %}
+            {% if not new_comment and tryToPost %}
+              <div class="commentSubmitted">
+                There was a problem, please try again
+              </div>
+            {% endif %}
         </form>
 
         {% for comment in comments %}

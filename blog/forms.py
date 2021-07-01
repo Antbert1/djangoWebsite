@@ -16,7 +16,7 @@ class CommentForm(forms.Form):
             "placeholder": "Leave a comment"
         })
     )
-    captcha = CaptchaField(
-        label="What does this say?",
-        required=True,
-    )
+    # captcha = CaptchaField(
+    #     label="What does this say?",
+    #     required=True,
+    # )
