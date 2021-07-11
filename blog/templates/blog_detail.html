@@ -43,15 +43,22 @@
 <div class="row">
   <div class="col-md-12 shareSection">
     <div>
-      {% with base_url="https://protected-beyond-71115.herokuapp.com" %}
+      <!-- {% with base_url="https://protected-beyond-71115.herokuapp.com" %}
         <a class="shareIcon" href="https://www.facebook.com/sharer/sharer.php?u={{ base_url|urlencode }}{{ request.get_full_path|urlencode }}&t={{ post.title }}"><i class="fab fa-facebook-f"></i></a>
       {% endwith %}
       {% with base_url="https://protected-beyond-71115.herokuapp.com" %}
         <a class="shareIcon" href="https://twitter.com/share?text={{ post.title }}&url={{ base_url|urlencode }}{{ request.get_full_path|urlencode}}"><i class="fab fa-twitter"></i></a>
+      {% endwith %} -->
+      {% with base_url="http://antheamiddleton.com" %}
+        <a class="shareIcon" href="https://www.facebook.com/sharer/sharer.php?u={{ base_url|urlencode }}{{ request.get_full_path|urlencode }}&t={{ post.title }}"><i class="fab fa-facebook-f"></i></a>
       {% endwith %}
-      {% with base_url="https://protected-beyond-71115.herokuapp.com/" %}
-        <a class="shareIcon" href="https://www.linkedin.com/shareArticle?mini=true&url={{ base_url|urlencode }}{{ request.get_full_path|urlencode}}"><i class="fab fa-linkedin-in"></i></a>
+      {% with base_url="http://antheamiddleton.com" %}
+        <a class="shareIcon" href="https://twitter.com/share?text={{ post.title }}&url={{ base_url|urlencode }}{{ request.get_full_path|urlencode}}"><i class="fab fa-twitter"></i></a>
       {% endwith %}
+      <!-- {% with base_url="https://protected-beyond-71115.herokuapp.com/" %}
+
+        <a class="shareIcon" href="https://www.linkedin.com/sharing/share-offsite/?url={{ base_url|urlencode }}{{ request.get_full_path|urlencode}}"><i class="fab fa-linkedin-in"></i></a>
+      {% endwith %} -->
     </div>
   </div>
 </div>
