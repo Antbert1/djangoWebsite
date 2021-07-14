@@ -20,6 +20,10 @@ body {
   justify-content: space-between;
 }
 
+.logoImg {
+  max-width: 500px;
+}
+
 .sectionFill {
   flex-grow: 1;
 }
@@ -33,7 +37,10 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: -50px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  /* margin-top: -50px; */
 }
 
 .paddingFix {
