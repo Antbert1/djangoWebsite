@@ -84,6 +84,12 @@ body {
   counter-reset: items;
 }
 
+.gridContainerNew {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 7px;
+}
+
 .gridItem {
   background-color: white;
   width: 32%;
@@ -94,6 +100,24 @@ body {
   /* padding: 15px; */
   box-sizing: border-box;
   box-shadow: 0 0 2px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24), 0 0 0px 0 rgba(0,0,0,.12), 0 0px 0px 0 rgba(0,0,0,.24);
+}
+
+.gridItemNew{
+  
+  margin-right: 7px;
+  background-color: white;
+  width: 32%;
+  /* Optional */
+  position: relative;
+  margin-bottom: 2%;
+  /* border: 1px solid #4290e2; */
+  /* padding: 15px; */
+  box-sizing: border-box;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24), 0 0 0px 0 rgba(0,0,0,.12), 0 0px 0px 0 rgba(0,0,0,.24);
+} 
+
+.noPicGridItem {
+  height: 470px;
 }
 
 
@@ -292,9 +316,23 @@ h3 { text-align: center; }
   color: white;
 }
 
+.blurbAndCat {
+  display: flex;
+  flex-direction: column;
+  height: 377px;
+  justify-content: space-between;
+}
+
 .blurb {
   padding: 15px;
+  height: 160px;
 }
+
+.blurbNoPic {
+  padding: 15px;
+}
+
+
 
 h1, h2, h3, h4, p, a {
 	font-family: 'Roboto', sans-serif;
@@ -1253,6 +1291,10 @@ tr:hover {
   .imageAndTitle img {
     max-width: none;
   }
+
+  .gridItemNew{ 
+    width: 49%;
+  }
 }
 
 @media only screen and (max-width: 992px) {
@@ -1268,6 +1310,9 @@ tr:hover {
 		body {
 			font-size: 16px;
 		}
+    .gridItemNew {
+      width: 100%;
+    }
 }
 
 
@@ -1285,6 +1330,10 @@ tr:hover {
     height: 7750px;
   }
   .gridItem {
+    width: 100%;
+  }
+
+  .gridItemNew {
     width: 100%;
   }
 }
