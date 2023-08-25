@@ -48,7 +48,7 @@ if RUNNING_DEVSERVER:
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['protected-beyond-71115.herokuapp.com', 'antheamiddleton.com', 'www.antheamiddleton.com', 'localhost']
+ALLOWED_HOSTS = ['protected-beyond-71115.herokuapp.com', 'antheamiddleton.com', 'www.antheamiddleton.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -61,7 +61,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'captcha'
+    'captcha',
+    'storages',
+    'boto'
 ]
 
 MIDDLEWARE = [
