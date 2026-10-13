@@ -20,6 +20,14 @@ body {
   justify-content: space-between;
 }
 
+.logo {
+  text-align: center;
+}
+
+.headerText {
+  font-size: 40;
+}
+
 .logoImg {
   max-width: 500px;
 }
